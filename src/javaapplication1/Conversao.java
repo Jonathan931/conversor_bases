@@ -5,6 +5,10 @@
  */
 package javaapplication1;
 
+  import java.util.ArrayList;
+  import java.util.List;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Jonathan
@@ -17,6 +21,7 @@ public class Conversao extends javax.swing.JFrame {
     public Conversao() {
         initComponents();
         setLocationRelativeTo(null);
+        comboEntrada.setSelectedIndex(1);
     }
 
     /**
@@ -39,7 +44,7 @@ public class Conversao extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtEntrada = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         comboEntrada = new javax.swing.JComboBox<>();
         comboSaida = new javax.swing.JComboBox<>();
@@ -63,14 +68,14 @@ public class Conversao extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/Binary_file - Copia.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Binary_file - Copia.png"))); // NOI18N
         jLabel3.setText("jLabel3");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("CONVERSOR DE BASE");
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/Binary_file - Copia.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Binary_file - Copia.png"))); // NOI18N
         jLabel4.setText("jLabel3");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -110,9 +115,9 @@ public class Conversao extends javax.swing.JFrame {
             .addGap(0, 99, Short.MAX_VALUE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/javaapplication1/Binary_file - Copia.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Binary_file - Copia.png"))); // NOI18N
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preencha e  escolha o sistema numérico para conversão", 0, 0, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Preencha e  escolha o sistema numérico para conversão", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Entrada:");
@@ -127,6 +132,11 @@ public class Conversao extends javax.swing.JFrame {
         comboSaida.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Binário", "Decimal", "Hexadecimal" }));
 
         jButton1.setText("Converter");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -138,7 +148,7 @@ public class Conversao extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(comboEntrada, 0, 113, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(txtEntrada))
                 .addGap(114, 114, 114)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -146,10 +156,10 @@ public class Conversao extends javax.swing.JFrame {
                     .addComponent(comboSaida, 0, 183, Short.MAX_VALUE)
                     .addComponent(jTextField2))
                 .addGap(43, 43, 43))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(231, 231, 231)
                 .addComponent(jButton1)
-                .addGap(247, 247, 247))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,7 +168,7 @@ public class Conversao extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -212,6 +222,62 @@ public class Conversao extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (!txtEntrada.getText().isEmpty()){
+        int escolhaEntrada = comboEntrada.getSelectedIndex() == 0 ? 2 : comboEntrada.getSelectedIndex() == 1  ? 10 : 16 ;
+        if (escolhaEntrada == 10){
+            sistemaDecimal();
+        }
+        
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Preencha a entrada!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    public void sistemaDecimal(){
+        int escolhaSaida   = comboSaida.getSelectedIndex() == 0 ? 2 : comboSaida.getSelectedIndex() == 1  ? 10 : 16 ;
+        String valor       = txtEntrada.getText();
+        int valor1         = Integer.parseInt(valor);
+        jTextField2.setText("");
+        String aux = "" ;
+        while (valor1 >= escolhaSaida){
+            int resto = valor1 % escolhaSaida;
+            System.out.println(resto);
+            valor1 = valor1 / escolhaSaida;
+            if (resto <= 9 ){
+                System.out.println("enotu");
+                aux += Integer.toString(resto); 
+            }else{
+                aux+= retornaLetraHexadecimal(resto);
+            }
+        }
+        if (valor1 <= 9){
+            aux += Integer.toString(valor1) ;
+        }else{
+            aux = retornaLetraHexadecimal(valor1);
+        }
+        aux = new StringBuilder(aux).reverse().toString();
+        jTextField2.setText(aux);
+    }
+    
+    public String retornaLetraHexadecimal (int num){
+        switch (num){
+            case 10:
+                return "A";
+            case 11:
+                return "B";
+            case 12:
+                return "C";
+            case 13:
+                return "D";
+            case 14:
+                return "E";
+            case 15:
+                return "F";
+        }
+        return "";
+    }
     /**
      * @param args the command line arguments
      */
@@ -262,7 +328,7 @@ public class Conversao extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField txtEntrada;
     // End of variables declaration//GEN-END:variables
 }
